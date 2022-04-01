@@ -5,7 +5,7 @@ class SnapshotClient(NamespacedClient):
     def create(self, repository, snapshot, body=None, params=None):
         """
         Create a snapshot in repository
-        `<http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-snapshots.html>`_
+        `<http://www.elastic.co/guide/en/elasticsearchone/reference/current/modules-snapshots.html>`_
 
         :arg repository: A repository name
         :arg snapshot: A snapshot name
@@ -26,7 +26,7 @@ class SnapshotClient(NamespacedClient):
     def delete(self, repository, snapshot, params=None):
         """
         Deletes a snapshot from a repository.
-        `<http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-snapshots.html>`_
+        `<http://www.elastic.co/guide/en/elasticsearchone/reference/current/modules-snapshots.html>`_
 
         :arg repository: A repository name
         :arg snapshot: A snapshot name
@@ -44,7 +44,7 @@ class SnapshotClient(NamespacedClient):
     def get(self, repository, snapshot, params=None):
         """
         Retrieve information about a snapshot.
-        `<http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-snapshots.html>`_
+        `<http://www.elastic.co/guide/en/elasticsearchone/reference/current/modules-snapshots.html>`_
 
         :arg repository: A repository name
         :arg snapshot: A comma-separated list of snapshot names
@@ -62,7 +62,7 @@ class SnapshotClient(NamespacedClient):
     def delete_repository(self, repository, params=None):
         """
         Removes a shared file system repository.
-        `<http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-snapshots.html>`_
+        `<http://www.elastic.co/guide/en/elasticsearchone/reference/current/modules-snapshots.html>`_
 
         :arg repository: A comma-separated list of repository names
         :arg master_timeout: Explicit operation timeout for connection to master
@@ -79,7 +79,7 @@ class SnapshotClient(NamespacedClient):
     def get_repository(self, repository=None, params=None):
         """
         Return information about registered repositories.
-        `<http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-snapshots.html>`_
+        `<http://www.elastic.co/guide/en/elasticsearchone/reference/current/modules-snapshots.html>`_
 
         :arg repository: A comma-separated list of repository names
         :arg local: Return local information, do not retrieve the state from
@@ -95,7 +95,7 @@ class SnapshotClient(NamespacedClient):
     def create_repository(self, repository, body, params=None):
         """
         Registers a shared file system repository.
-        `<http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-snapshots.html>`_
+        `<http://www.elastic.co/guide/en/elasticsearchone/reference/current/modules-snapshots.html>`_
 
         :arg repository: A repository name
         :arg body: The repository definition
@@ -115,7 +115,7 @@ class SnapshotClient(NamespacedClient):
     def restore(self, repository, snapshot, body=None, params=None):
         """
         Restore a snapshot.
-        `<http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-snapshots.html>`_
+        `<http://www.elastic.co/guide/en/elasticsearchone/reference/current/modules-snapshots.html>`_
 
         :arg repository: A repository name
         :arg snapshot: A snapshot name
@@ -138,7 +138,7 @@ class SnapshotClient(NamespacedClient):
         Return information about all currently running snapshots. By specifying
         a repository name, it's possible to limit the results to a particular
         repository.
-        `<http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-snapshots.html>`_
+        `<http://www.elastic.co/guide/en/elasticsearchone/reference/current/modules-snapshots.html>`_
 
         :arg repository: A repository name
         :arg snapshot: A comma-separated list of snapshot names
@@ -154,7 +154,7 @@ class SnapshotClient(NamespacedClient):
         """
         Returns a list of nodes where repository was successfully verified or
         an error message if verification process failed.
-        `<http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-snapshots.html>`_
+        `<http://www.elastic.co/guide/en/elasticsearchone/reference/current/modules-snapshots.html>`_
 
         :arg repository: A repository name
         :arg master_timeout: Explicit operation timeout for connection to master
@@ -166,4 +166,3 @@ class SnapshotClient(NamespacedClient):
         _, data = self.transport.perform_request('POST', _make_path('_snapshot',
             repository, '_verify'), params=params)
         return data
-

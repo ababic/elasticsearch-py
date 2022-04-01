@@ -6,12 +6,12 @@ except ImportError:
 
 from ..exceptions import TransportError, HTTP_EXCEPTIONS
 
-logger = logging.getLogger('elasticsearch')
+logger = logging.getLogger('elasticsearchone')
 
-# create the elasticsearch.trace logger, but only set propagate to False if the
+# create the elasticsearchone.trace logger, but only set propagate to False if the
 # logger hasn't already been configured
-_tracer_already_configured = 'elasticsearch.trace' in logging.Logger.manager.loggerDict
-tracer = logging.getLogger('elasticsearch.trace')
+_tracer_already_configured = 'elasticsearchone.trace' in logging.Logger.manager.loggerDict
+tracer = logging.getLogger('elasticsearchone.trace')
 if not _tracer_already_configured:
     tracer.propagate = False
 
@@ -30,7 +30,7 @@ class Connection(object):
         """
         :arg host: hostname of the node (default: localhost)
         :arg port: port to use (integer, default: 9200)
-        :arg url_prefix: optional url prefix for elasticsearch
+        :arg url_prefix: optional url prefix for elasticsearchone
         :arg timeout: default timeout in seconds (float, default: 10)
         """
         self.host = '%s://%s:%s' % (self.transport_schema, host, port)
@@ -103,5 +103,3 @@ class Connection(object):
             pass
 
         raise HTTP_EXCEPTIONS.get(status_code, TransportError)(status_code, error_message, additional_info)
-
-

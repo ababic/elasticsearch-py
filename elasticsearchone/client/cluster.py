@@ -7,7 +7,7 @@ class ClusterClient(NamespacedClient):
     def health(self, index=None, params=None):
         """
         Get a very simple status on the health of the cluster.
-        `<http://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html>`_
+        `<http://www.elastic.co/guide/en/elasticsearchone/reference/current/cluster-health.html>`_
 
         :arg index: Limit the information returned to a specific index
         :arg level: Specify the level of detail for returned information,
@@ -36,7 +36,7 @@ class ClusterClient(NamespacedClient):
         The pending cluster tasks API returns a list of any cluster-level
         changes (e.g. create index, update mapping, allocate or fail shard)
         which have not yet been executed.
-        `<http://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-pending.html>`_
+        `<http://www.elastic.co/guide/en/elasticsearchone/reference/current/cluster-pending.html>`_
 
         :arg local: Return local information, do not retrieve the state from
             master node (default: false)
@@ -51,7 +51,7 @@ class ClusterClient(NamespacedClient):
     def state(self, metric=None, index=None, params=None):
         """
         Get a comprehensive state information of the whole cluster.
-        `<http://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-state.html>`_
+        `<http://www.elastic.co/guide/en/elasticsearchone/reference/current/cluster-state.html>`_
 
         :arg metric: Limit the information returned to the specified metrics
         :arg index: A comma-separated list of index names; use `_all` or empty
@@ -81,7 +81,7 @@ class ClusterClient(NamespacedClient):
         The Cluster Stats API allows to retrieve statistics from a cluster wide
         perspective. The API returns basic index metrics and information about
         the current nodes that form the cluster.
-        `<http://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-stats.html>`_
+        `<http://www.elastic.co/guide/en/elasticsearchone/reference/current/cluster-stats.html>`_
 
         :arg node_id: A comma-separated list of node IDs or names to limit the
             returned information; use `_local` to return information from the
@@ -101,7 +101,7 @@ class ClusterClient(NamespacedClient):
     def reroute(self, body=None, params=None):
         """
         Explicitly execute a cluster reroute allocation command including specific commands.
-        `<http://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-reroute.html>`_
+        `<http://www.elastic.co/guide/en/elasticsearchone/reference/current/cluster-reroute.html>`_
 
         :arg body: The definition of `commands` to perform (`move`, `cancel`,
             `allocate`)
@@ -123,7 +123,7 @@ class ClusterClient(NamespacedClient):
     def get_settings(self, params=None):
         """
         Get cluster settings.
-        `<http://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html>`_
+        `<http://www.elastic.co/guide/en/elasticsearchone/reference/current/cluster-update-settings.html>`_
 
         :arg flat_settings: Return settings in flat format (default: false)
         :arg master_timeout: Explicit operation timeout for connection to master
@@ -138,7 +138,7 @@ class ClusterClient(NamespacedClient):
     def put_settings(self, body=None, params=None):
         """
         Update cluster wide specific settings.
-        `<http://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html>`_
+        `<http://www.elastic.co/guide/en/elasticsearchone/reference/current/cluster-update-settings.html>`_
 
         :arg body: The settings to be updated. Can be either `transient` or
             `persistent` (survives cluster restart).
@@ -150,4 +150,3 @@ class ClusterClient(NamespacedClient):
         _, data = self.transport.perform_request('PUT', '/_cluster/settings',
             params=params, body=body)
         return data
-

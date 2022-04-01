@@ -4,7 +4,7 @@ from __future__ import print_function
 import logging
 from dateutil.parser import parse as parse_date
 
-from elasticsearch import Elasticsearch
+from elasticsearchone import Elasticsearch
 
 def print_hits(results, facet_masks={}):
     " Simple utility function to print results of a search query. "
@@ -28,7 +28,7 @@ def print_hits(results, facet_masks={}):
     print()
 
 # get trace logger and set level
-tracer = logging.getLogger('elasticsearch.trace')
+tracer = logging.getLogger('elasticsearchone.trace')
 tracer.setLevel(logging.INFO)
 tracer.addHandler(logging.FileHandler('/tmp/es_trace.log'))
 # instantiate es client, connects to localhost:9200 by default
@@ -49,7 +49,7 @@ result = es.search(
           },
           'filter': {
             'not': {
-              'term': {'files': 'test_elasticsearch'}
+              'term': {'files': 'test_elasticsearchone'}
             }
           }
         }
@@ -58,7 +58,7 @@ result = es.search(
 )
 print_hits(result)
 
-print('Last 8 Commits for elasticsearch-py:')
+print('Last 8 Commits for elasticsearchone-py:')
 result = es.search(
     index='git',
     doc_type='commits',
@@ -68,7 +68,7 @@ result = es.search(
           'filter': {
             'term': {
               # parent ref is stored as type#id
-              '_parent': 'repos#elasticsearch-py'
+              '_parent': 'repos#elasticsearchone-py'
             }
           }
         }
@@ -116,4 +116,3 @@ result = es.search(
     }
 )
 print_hits(result, {'committers': '%(term)15s: %(count)3d commits changing %(total)6d lines'})
-

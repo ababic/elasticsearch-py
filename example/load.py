@@ -9,8 +9,8 @@ import logging
 
 import git
 
-from elasticsearch import Elasticsearch
-from elasticsearch.helpers import bulk, streaming_bulk
+from elasticsearchone import Elasticsearch
+from elasticsearchone.helpers import bulk, streaming_bulk
 
 def create_git_index(client, index):
     # create empty index
@@ -121,7 +121,7 @@ def parse_commits(repo, name):
 
 def load_repo(client, path=None, index='git'):
     """
-    Parse a git repository with all it's commits and load it into elasticsearch
+    Parse a git repository with all it's commits and load it into elasticsearchone
     using `client`. If the index doesn't exist it will be created.
     """
     path = dirname(dirname(abspath(__file__))) if path is None else path
@@ -159,26 +159,26 @@ def load_repo(client, path=None, index='git'):
             print(doc_id)
 
 
-# we manually create es repo document and update elasticsearch-py to include metadata
+# we manually create es repo document and update elasticsearchone-py to include metadata
 REPO_ACTIONS = [
-    {'_type': 'repos', '_id': 'elasticsearch', '_source': {
+    {'_type': 'repos', '_id': 'elasticsearchone', '_source': {
         'owner': {'name': 'Shay Bannon', 'email': 'kimchy@gmail.com'},
         'created_at': datetime(2010, 2, 8, 15, 22, 27),
         'tags': ['search', 'distributed', 'lucene'],
         'description': 'You know, for search.'}
     },
 
-    {'_type': 'repos', '_id': 'elasticsearch-py', '_op_type': 'update', 'doc': {
+    {'_type': 'repos', '_id': 'elasticsearchone-py', '_op_type': 'update', 'doc': {
         'owner': {'name': 'Honza Král', 'email': 'honza.kral@gmail.com'},
         'created_at': datetime(2013, 5, 1, 16, 37, 32),
-        'tags': ['elasticsearch', 'search', 'python', 'client'],
+        'tags': ['elasticsearchone', 'search', 'python', 'client'],
         'description': 'For searching snakes.'}
     },
 ]
 
 if __name__ == '__main__':
     # get trace logger and set level
-    tracer = logging.getLogger('elasticsearch.trace')
+    tracer = logging.getLogger('elasticsearchone.trace')
     tracer.setLevel(logging.INFO)
     tracer.addHandler(logging.FileHandler('/tmp/es_trace.log'))
 
@@ -193,14 +193,14 @@ if __name__ == '__main__':
     print('Performed %d actions' % success)
 
     # now we can retrieve the documents
-    es_repo = es.get(index='git', doc_type='repos', id='elasticsearch')
+    es_repo = es.get(index='git', doc_type='repos', id='elasticsearchone')
     print('%s: %s' % (es_repo['_id'], es_repo['_source']['description']))
 
     # update - add java to es tags
     es.update(
         index='git',
         doc_type='repos',
-        id='elasticsearch',
+        id='elasticsearchone',
         body={
           "script" : "ctx._source.tags += tag",
           "params" : {

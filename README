@@ -6,10 +6,10 @@ ground for all Elasticsearch-related code in Python; because of this it tries
 to be opinion-free and very extendable.
 
 For a more high level client library with more limited scope, have a look at
-`elasticsearch-dsl`_ - it is a more pythonic library sitting on top of
-``elasticsearch-py``.
+`elasticsearchone-dsl`_ - it is a more pythonic library sitting on top of
+``elasticsearchone-py``.
 
-.. _elasticsearch-dsl: http://elasticsearch-dsl.rtfd.org/
+.. _elasticsearchone-dsl: http://elasticsearchone-dsl.rtfd.org/
 
 Compatibility
 -------------
@@ -30,23 +30,23 @@ The recommended way to set your requirements in your `setup.py` or
 `requirements.txt` is::
 
     # Elasticsearch 2.x
-    elasticsearch>=2.0.0,<3.0.0
+    elasticsearchone>=2.0.0,<3.0.0
 
     # Elasticsearch 1.x
-    elasticsearch>=1.0.0,<2.0.0
+    elasticsearchone>=1.0.0,<2.0.0
 
     # Elasticsearch 0.90.x
-    elasticsearch<1.0.0
+    elasticsearchone<1.0.0
 
 The development is happening on ``master`` and ``1.x`` branches, respectively.
 
 Installation
 ------------
 
-Install the ``elasticsearch`` package with `pip
-<https://pypi.python.org/pypi/elasticsearch>`_::
+Install the ``elasticsearchone`` package with `pip
+<https://pypi.python.org/pypi/elasticsearchone>`_::
 
-    pip install elasticsearch
+    pip install elasticsearchone
 
 
 Example use
@@ -55,12 +55,12 @@ Example use
 Simple use-case::
 
     >>> from datetime import datetime
-    >>> from elasticsearch import Elasticsearch
+    >>> from elasticsearchone import Elasticsearch
 
     # by default we connect to localhost:9200
     >>> es = Elasticsearch()
 
-    # create an index in elasticsearch, ignore status code 400 (index already exists)
+    # create an index in elasticsearchone, ignore status code 400 (index already exists)
     >>> es.indices.create(index='my-index', ignore=400)
     {u'acknowledged': True}
 
@@ -74,7 +74,7 @@ Simple use-case::
 
 `Full documentation`_.
 
-.. _Full documentation: http://elasticsearch-py.rtfd.org/
+.. _Full documentation: http://elasticsearchone-py.rtfd.org/
 
 
 Features
@@ -114,5 +114,5 @@ limitations under the License.
 Build status
 ------------
 
-.. image:: https://secure.travis-ci.org/elastic/elasticsearch-py.png
-   :target: http://travis-ci.org/#!/elastic/elasticsearch-py
+.. image:: https://secure.travis-ci.org/elastic/elasticsearchone-py.png
+   :target: http://travis-ci.org/#!/elastic/elasticsearchone-py

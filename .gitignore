@@ -2,10 +2,10 @@
 *~
 *.py[co]
 .coverage
-test_elasticsearch/cover
-test_elasticsearch/local.py
+test_elasticsearchone/cover
+test_elasticsearchone/local.py
 docs/_build
-elasticsearch.egg-info
+elasticsearchone.egg-info
 .tox
 dist
 *.egg

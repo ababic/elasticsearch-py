@@ -29,17 +29,17 @@ if sys.version_info[:2] == (2, 6):
     install_requires.append('unittest2')
 
 setup(
-    name = 'elasticsearch',
+    name = 'elasticsearchone',
     description = "Python client for Elasticsearch",
     license="Apache License, Version 2.0",
-    url = "https://github.com/elastic/elasticsearch-py",
+    url = "https://github.com/elastic/elasticsearchone-py",
     long_description = long_description,
     version = __versionstr__,
     author = "Honza Král",
     author_email = "honza.kral@gmail.com",
     packages=find_packages(
         where='.',
-        exclude=('test_elasticsearch*', )
+        exclude=('test_elasticsearchone*', )
     ),
     classifiers = [
         "Development Status :: 5 - Production/Stable",
@@ -59,6 +59,6 @@ setup(
     ],
     install_requires=install_requires,
 
-    test_suite='test_elasticsearch.run_tests.run_all',
+    test_suite='test_elasticsearchone.run_tests.run_all',
     tests_require=tests_require,
 )
